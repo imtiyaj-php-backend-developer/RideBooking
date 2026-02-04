@@ -1,59 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚖 Ride Booking API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based **Ride Booking Backend Application** built as part of a technical assessment.
 
-## About Laravel
+This project provides a simple ride-booking flow used by a mobile application, along with a **Blade-based Admin Panel** to monitor and manage rides.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The system supports:
 
-## Learning Laravel
+- Passengers creating ride requests
+- Drivers discovering nearby rides and requesting them
+- Passenger approval of drivers
+- Dual ride completion logic
+- Admin viewing all rides via a web-based panel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ✨ Features
 
-## Laravel Sponsors
+- Passenger ride creation
+- Driver nearby ride discovery (radius-based)
+- Driver ride request / claim
+- Passenger approval of driver
+- Ride completion only when both passenger and driver confirm
+- Admin panel using Blade templates
+- JSON-based REST APIs
+- No frontend framework
+- No authentication (logic-restricted as per assessment)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠 Tech Stack
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Laravel Framework
+- MySQL Database
+- Blade Templates
+- REST APIs (JSON responses)
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📂 Project Installation
 
-## Code of Conduct
+### 1️⃣ Clone Repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/imtiyaj-php-backend-developer/RideBooking.git
 
-## Security Vulnerabilities
+2️⃣ Install Dependencies
+composer install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3️⃣ Environment Configuration
+cp .env.example .env
 
-## License
+Update database credentials in .env:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+DB_DATABASE=ride_booking
+DB_USERNAME=root
+DB_PASSWORD=
+
+4️⃣ Database Migration & Seeder
+php artisan migrate --seed
+
+
+Seeder will create:
+
+✅ 1 Admin
+
+✅ Multiple Passengers
+
+✅ Multiple Drivers
+
+5️⃣ Run Application
+php artisan serve
+
+
+Application URL:
+
+http://127.0.0.1:8000
+
+## 📬 API Collection (Postman)
+
+A complete Postman collection is included in this repository.
+
+📁 Location: postman/RideBooking.postman_collection
+
+### How to use:
+1. Open Postman
+2. Click **Import**
+3. Select the JSON file from `/postman`
+4. Set environment variables:
+   - `base_url = http://127.0.0.1:8000/api`
