@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "aa7e5444-9a27-43ef-ba54-652053b64be0",
+    "name": "RideBooking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30273449",
+    "_collection_link": "https://go.postman.co/collection/30273449-aa7e5444-9a27-43ef-ba54-652053b64be0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Passenger",
+      "item": [
+        {
+          "name": "BookRide",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"passenger_uid\": \"e423c624-c0eb-4bd8-8138-655913f4eea3\",\r\n  \"pickup_lat\": 28.6139,\r\n  \"pickup_lng\": 77.2090,\r\n  \"dest_lat\": 28.7041,\r\n  \"dest_lng\": 77.1025\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/passenger/ride",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "passenger",
+                "ride"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ApproveRideRequest",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ride_uid\": \"f746cc28-501b-4ffb-a570-0f4bc83c1c9b\",\r\n  \"driver_uid\": \"4a38b8ef-43c1-4a37-bb68-bf224874cd67\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/passenger/ride/approve",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "passenger",
+                "ride",
+                "approve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RideComplete",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ride_uid\": \"f746cc28-501b-4ffb-a570-0f4bc83c1c9b\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/passenger/ride/complete",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "passenger",
+                "ride",
+                "complete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Driver",
+      "item": [
+        {
+          "name": "LocationUpdate",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_uid\": \"4a38b8ef-43c1-4a37-bb68-bf224874cd67\",\n  \"latitude\": 28.6139,\n  \"longitude\": 77.2090\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/driver/location",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "driver",
+                "location"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "RideNearby",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/driver/rides/nearby?driver_uid=4a38b8ef-43c1-4a37-bb68-bf224874cd67",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "driver",
+                "rides",
+                "nearby"
+              ],
+              "query": [
+                {
+                  "key": "driver_uid",
+                  "value": "4a38b8ef-43c1-4a37-bb68-bf224874cd67"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ApprovePassengerRideBook",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ride_uid\": \"f746cc28-501b-4ffb-a570-0f4bc83c1c9b\",\r\n  \"driver_uid\": \"4a38b8ef-43c1-4a37-bb68-bf224874cd67\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/driver/ride/request",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "driver",
+                "ride",
+                "request"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CompleteRideByDriver",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ride_uid\": \"f746cc28-501b-4ffb-a570-0f4bc83c1c9b\",\r\n  \"driver_uid\": \"4a38b8ef-43c1-4a37-bb68-bf224874cd67\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/driver/ride/complete",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "driver",
+                "ride",
+                "complete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "PassengerList",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/admin/passengers",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "passengers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DriverList",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/admin/drivers",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "admin",
+                "drivers"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
